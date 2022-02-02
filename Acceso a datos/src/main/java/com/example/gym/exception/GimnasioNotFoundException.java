@@ -1,6 +1,6 @@
 package com.example.gym.exception;
 
-public class GimnasioNotFoundException {
+public class GimnasioNotFoundException extends RuntimeException{
 
     public GimnasioNotFoundException() {
         super();
