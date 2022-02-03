@@ -1,7 +1,7 @@
 package com.example.gym.service;
 
 import com.example.gym.domain.Cliente;
-
+import com.example.gym.controller.ClienteController;
 import java.util.Optional;
 import java.util.Set;
 

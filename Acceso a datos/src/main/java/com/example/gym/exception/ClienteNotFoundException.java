@@ -1,5 +1,6 @@
 package com.example.gym.exception;
 
+
 public class ClienteNotFoundException extends RuntimeException{
 
     public ClienteNotFoundException() {

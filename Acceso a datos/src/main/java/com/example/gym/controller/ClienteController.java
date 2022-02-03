@@ -12,9 +12,9 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @PostMapping("/products")
+    @PostMapping("/clientes")
     public ResponseEntity<Cliente> addCliente(@RequestBody Cliente cliente) {
-        Cliente addedProduct = clienteService.addCliente(cliente);
-        return new ResponseEntity<>(addedProduct, HttpStatus.OK);
+        Cliente addedCliente = clienteService.addCliente(cliente);
+        return new ResponseEntity<>(addedCliente, HttpStatus.OK);
     }
 }
