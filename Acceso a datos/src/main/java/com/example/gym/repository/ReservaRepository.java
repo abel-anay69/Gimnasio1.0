@@ -1,4 +1,13 @@
 package com.example.gym.repository;
 
-public interface ReservaRepository {
+import com.example.gym.domain.Reserva;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.Optional;
+import java.util.Set;
+
+public interface ReservaRepository extends CrudRepository<Reserva, String> {
+
+    Set<Reserva> findAll();
+    Optional<Reserva> findByCodigo(int codReserva);
 }
