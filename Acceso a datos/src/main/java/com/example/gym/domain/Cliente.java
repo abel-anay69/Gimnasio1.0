@@ -34,8 +34,8 @@ public class Cliente {
     @Column
     private int telefono;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Reserva reserva;
+   /* @ManyToOne(fetch = FetchType.LAZY)
+    private Reserva reserva;*/
 
 }
 

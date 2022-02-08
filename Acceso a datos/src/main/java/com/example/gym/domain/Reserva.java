@@ -30,10 +30,10 @@ public class Reserva {
     @Column
     private Time hora;
 
-    @OneToMany(mappedBy = "reserva", cascade = CascadeType.ALL)
+   /* @OneToMany(mappedBy = "reserva", cascade = CascadeType.ALL)
     private List<Clase> reservas = new ArrayList<>();
 
     @OneToMany(mappedBy = "reserva", cascade = CascadeType.ALL)
-    private List<Cliente> clientes = new ArrayList<>();
+    private List<Cliente> clientes = new ArrayList<>();*/
 
 }
