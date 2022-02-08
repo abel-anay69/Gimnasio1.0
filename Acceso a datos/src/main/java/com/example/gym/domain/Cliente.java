@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "cliente")
+@Entity
+@Table  (name = "cliente")
 public class Cliente {
 
     @Schema(description = "DNI de cliente", example = "49770662E", required = true)
@@ -32,6 +33,10 @@ public class Cliente {
     @Schema(description = "Telefono del cliebte", example = "657123997", required = true)
     @Column
     private int telefono;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_clase")
+    private Clase clase;
 
 }
 
