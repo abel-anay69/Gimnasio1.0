@@ -34,9 +34,8 @@ public class Cliente {
     @Column
     private int telefono;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_clase")
-    private Clase clase;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Reserva reserva;
 
 }
 

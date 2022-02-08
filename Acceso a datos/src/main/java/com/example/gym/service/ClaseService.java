@@ -7,7 +7,7 @@ import java.util.Set;
 
 public interface ClaseService {
     Set<Clase> findAll();
-    Optional<Clase> findByClases(String clase);
+    Optional<Clase> findByClases(String nombre);
     Clase addClase(Clase clase);
     Clase modifyClase(String nombre, Clase newClase);
     void deleteClase(String nombre);
