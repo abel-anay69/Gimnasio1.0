@@ -39,8 +39,7 @@ public class Clase {
     @Column
     private String descripcion;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "dni")
-    private Cliente cliente;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Reserva reserva;
 }
 
