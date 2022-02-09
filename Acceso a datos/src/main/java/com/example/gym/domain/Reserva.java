@@ -21,20 +21,14 @@ public class Reserva {
     @Schema(description = "Identificacion de la reserva", example = "1", required = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
-    @Schema(description = "Fecha de la reserva", example = "2022/02/22", required = true)
+    @Schema(description = "Fecha de la reserva", example = "2022-02-22", required = true)
     @Column
     private Date fecha;
 
-    @Schema(description = "Hora de la reserva", example = "15:22", required = true)
+    @Schema(description = "Hora de la reserva", example = "15:22:22", required = true)
     @Column
     private Time hora;
-
-   /* @OneToMany(mappedBy = "reserva", cascade = CascadeType.ALL)
-    private List<Clase> reservas = new ArrayList<>();
-
-    @OneToMany(mappedBy = "reserva", cascade = CascadeType.ALL)
-    private List<Cliente> clientes = new ArrayList<>();*/
 
 }

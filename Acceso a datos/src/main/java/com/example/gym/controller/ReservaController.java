@@ -2,6 +2,7 @@ package com.example.gym.controller;
 
 
 import com.example.gym.domain.Reserva;
+import com.example.gym.domain.Reserva;
 import com.example.gym.exception.ReservaNotFoundException;
 import com.example.gym.service.ReservaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,6 +16,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+import java.util.Set;
+
 
 @RestController
 @Tag(name = "Reservas", description = "Catálogo de reservas")
@@ -22,6 +26,14 @@ public class ReservaController {
     @Autowired
     private ReservaService reservaService;
 
+    //HAy que hacer @Operciotn y todo eso de apiresponse
+
+    @GetMapping(value ="/reserva", produces = "application/json")
+    public ResponseEntity<Set<Reserva>> getClasesList() {
+        Set<Reserva> reservas = null;
+        reservas = reservaService.findAll();
+        return new ResponseEntity<>(reservas, HttpStatus.OK);
+    }
 
 
     @Operation(summary = "Obtiene una reserva determinado")
@@ -32,7 +44,7 @@ public class ReservaController {
                     Response.class)))
     })
 
-    @GetMapping("/reservas/{id}")
+    @GetMapping("/reserva/{id}")
     public ResponseEntity<Reserva> getReservas(@PathVariable int id) {
         Reserva reserva = reservaService.findById(id)
                 .orElseThrow(() -> new ReservaNotFoundException(id));
@@ -46,7 +58,7 @@ public class ReservaController {
                     Reserva.class)))
     })
 
-    @PostMapping("/reservas")
+    @PostMapping(value = "/reserva")
     public ResponseEntity<Reserva> addReserva(@RequestBody Reserva reserva) {
         Reserva addedReserva = reservaService.addReserva(reserva);
         return new ResponseEntity<>(addedReserva, HttpStatus.OK);
@@ -60,10 +72,10 @@ public class ReservaController {
                     Response.class)))
     })
 
-    @PutMapping(value ="/reservas/{codReserva}", produces = "application/json", consumes =  "application/json")
-    public ResponseEntity<Reserva> modifyReservas(@PathVariable int codReserva,
+    @PutMapping(value ="/reserva/{id}", produces = "application/json", consumes =  "application/json")
+    public ResponseEntity<Reserva> modifyReserva(@PathVariable long id,
                                                 @RequestBody Reserva newReserva) {
-        Reserva reserva = reservaService.modifyReserva(codReserva, newReserva);
+        Reserva reserva = reservaService.modifyReserva(id, newReserva);
         return new ResponseEntity<>(reserva, HttpStatus.OK);
     }
 
@@ -76,11 +88,9 @@ public class ReservaController {
                     Response.class)))
     })
 
-    @DeleteMapping(value ="/reservas/{codReserva}", produces = "application/json")
-    public ResponseEntity<Response> deleteReservas(@PathVariable int codReserva)
+    @DeleteMapping(value ="/reserva/{id}", produces = "application/json")
+    public void deleteReservas(@PathVariable int id)
     {
-        reservaService.deleteReserva(codReserva);
-        return new ResponseEntity<>(Response.noErrorResponse(),
-                HttpStatus.OK);
+        reservaService.deleteReserva(id);
     }
 }

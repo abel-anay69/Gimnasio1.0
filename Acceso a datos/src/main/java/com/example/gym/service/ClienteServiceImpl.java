@@ -28,7 +28,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente addCliente(Cliente cliente) {
+    public Cliente meteCliente(Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 

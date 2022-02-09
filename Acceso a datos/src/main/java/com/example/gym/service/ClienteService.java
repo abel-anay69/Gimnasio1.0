@@ -9,7 +9,7 @@ public interface ClienteService {
 
     Set<Cliente> findAll();
     Optional<Cliente> findByDni(String dni);
-    Cliente addCliente(Cliente cliente);
+    Cliente meteCliente(Cliente cliente);
     Cliente modifyCliente(String dni, Cliente newCliente);
     void deleteCliente(String dni);
 }

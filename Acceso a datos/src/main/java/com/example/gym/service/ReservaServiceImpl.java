@@ -32,7 +32,7 @@ public class ReservaServiceImpl implements ReservaService {
     }
 
     @Override
-    public Reserva modifyReserva(int id, Reserva newReserva) {
+    public Reserva modifyReserva(long id, Reserva newReserva) {
         Reserva reserva = reservaRepository.findById(id)
                 .orElseThrow(() -> new ReservaNotFoundException(id));
         newReserva.setId(reserva.getId());

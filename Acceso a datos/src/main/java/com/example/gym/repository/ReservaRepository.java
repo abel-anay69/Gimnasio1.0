@@ -10,7 +10,7 @@ public interface ReservaRepository extends CrudRepository<Reserva, String> {
 
     Set<Reserva> findAll();
 
-    Optional<Reserva> findById(int id);
+    Optional<Reserva> findById(long id);
 
     void deleteById(int id);
 }

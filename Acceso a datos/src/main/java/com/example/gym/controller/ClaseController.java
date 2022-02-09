@@ -1,6 +1,8 @@
 package com.example.gym.controller;
 
 import com.example.gym.domain.Clase;
+import com.example.gym.domain.Reserva;
+import com.example.gym.exception.ReservaNotFoundException;
 import com.example.gym.service.ClaseService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -31,7 +33,7 @@ public class ClaseController{
                     @Schema(implementation = Clase.class)))),
     })
 
-    @GetMapping(value ="/ClasesList", produces = "application/json")
+    @GetMapping(value ="/clase", produces = "application/json")
     public ResponseEntity<Set<Clase>> getClasesList(@RequestParam(value =
             "clase", defaultValue = "") String nombre) {
         Set<Clase> clases = null;
@@ -43,6 +45,12 @@ public class ClaseController{
         return new ResponseEntity<>(clases, HttpStatus.OK);
     }
 
+    @GetMapping("/clase/{id}")
+    public ResponseEntity<Clase> getClase(@PathVariable int id) {
+        Clase clase = claseService.findById(id)
+                .orElseThrow(() -> new ReservaNotFoundException(id));
+        return new ResponseEntity<>(clase, HttpStatus.OK);
+    }
 
     @Operation(summary = "Registra una nuevo clase")
     @ApiResponses(value = {
@@ -50,10 +58,16 @@ public class ClaseController{
             @ApiResponse(responseCode = "200", description = "Se registra la clase", content = @Content(schema = @Schema(implementation = Clase.class)))
     })
 
-    @PostMapping("/clases")
+    @PostMapping("/clase")
     public ResponseEntity<Clase> addClase(@RequestBody Clase clase){
         Clase addedClase = claseService.addClase(clase);
         return new ResponseEntity<>(addedClase, HttpStatus.OK);
     }
 
+    @PutMapping(value ="/clase/{id}", produces = "application/json", consumes =  "application/json")
+    public ResponseEntity<Clase> modifyClase(@PathVariable int id,
+                                                  @RequestBody Clase newClase) {
+        Clase clase = claseService.modifyClase(id, newClase);
+        return new ResponseEntity<>(clase, HttpStatus.OK);
+    }
 }

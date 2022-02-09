@@ -2,7 +2,7 @@ package com.example.gym.exception;
 
 public class ReservaNotFoundException extends RuntimeException{
 
-    public ReservaNotFoundException() {
+    public ReservaNotFoundException(long id) {
         super();
     }
 

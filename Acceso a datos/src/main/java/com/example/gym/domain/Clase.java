@@ -1,17 +1,30 @@
 package com.example.gym.domain;
 
+import com.example.gym.EntityIdFinder.EntityIdResolver;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table (name = "clase")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerator,
+        property="id",
+        resolver = EntityIdResolver.class,
+        scope = Clase.class
+)
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Clase {
 
     @Schema(description = "Identificador de clase", example = "1", required = true)
@@ -39,7 +52,14 @@ public class Clase {
     @Column
     private String descripcion;
 
-    /*@ManyToOne(fetch = FetchType.LAZY)
-    private Reserva reserva;*/
+    @OneToMany(mappedBy = "clase", orphanRemoval = true, cascade=CascadeType.ALL)
+    private List<Reserva> reservas = new ArrayList<>();
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 }
 
