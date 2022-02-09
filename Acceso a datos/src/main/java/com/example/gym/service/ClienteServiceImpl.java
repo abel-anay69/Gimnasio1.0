@@ -24,7 +24,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public Optional<Cliente> findByDni(String dni) {
-        return clienteRepository.findByDni(dni);
+        return Optional.of(clienteRepository.findByDni(dni).get());
     }
 
     @Override

@@ -10,6 +10,7 @@ import java.util.Set;
 public interface ClaseRepository extends CrudRepository<Clase, String> {
 
     Set<Clase> findAll();
-    Optional<Clase> findByClases(String nombre);
-
+    Optional<Clase> findById(int id);
+    void deleteById(int id);
+    Optional<Clase> findByNombre(String nombre);
 }

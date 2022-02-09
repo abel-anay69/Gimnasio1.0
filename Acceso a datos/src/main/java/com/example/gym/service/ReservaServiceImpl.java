@@ -22,8 +22,8 @@ public class ReservaServiceImpl implements ReservaService {
     }
 
     @Override
-    public Optional<Reserva> findByCodigo(int codReserva) {
-        return reservaRepository.findByCodigo(codReserva);
+    public Optional<Reserva> findById(int id) {
+        return reservaRepository.findById(id);
     }
 
     @Override
@@ -32,17 +32,17 @@ public class ReservaServiceImpl implements ReservaService {
     }
 
     @Override
-    public Reserva modifyReserva(int codReserva, Reserva newReserva) {
-        Reserva reserva = reservaRepository.findByCodigo(codReserva)
-                .orElseThrow(() -> new ReservaNotFoundException(codReserva));
-        newReserva.setCodReserva(reserva.getCodReserva());
+    public Reserva modifyReserva(int id, Reserva newReserva) {
+        Reserva reserva = reservaRepository.findById(id)
+                .orElseThrow(() -> new ReservaNotFoundException(id));
+        newReserva.setId(reserva.getId());
         return reservaRepository.save(newReserva);
     }
 
     @Override
-    public void deleteReserva(int codReserva) {
-        reservaRepository.findByCodigo(codReserva)
-                .orElseThrow(() -> new ReservaNotFoundException(codReserva));
-        reservaRepository.deleteReserva(codReserva);
+    public void deleteReserva(int id) {
+        reservaRepository.findById(id)
+                .orElseThrow(() -> new ReservaNotFoundException(id));
+        reservaRepository.deleteById(id);
     }
 }

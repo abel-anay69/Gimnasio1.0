@@ -17,7 +17,7 @@ public class Clase {
     @Schema(description = "Identificador de clase", example = "1", required = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_clase;
+    private int id;
 
     @Schema(description = "Ubicacion de la clase", example = "Sala 1", required = true)
     @Column

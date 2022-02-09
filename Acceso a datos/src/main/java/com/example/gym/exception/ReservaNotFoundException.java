@@ -6,8 +6,8 @@ public class ReservaNotFoundException extends RuntimeException{
         super();
     }
 
-    public ReservaNotFoundException(int codReserva) {
-        super("Reserva not found: " + codReserva);
+    public ReservaNotFoundException(int id) {
+        super("Reserva not found: " + id);
     }
 }
 

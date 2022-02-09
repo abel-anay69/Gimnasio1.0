@@ -23,8 +23,13 @@ public class ClaseServiceImpl implements ClaseService {
     }
 
     @Override
-    public Optional<Clase> findByClases(String nombre) {
-        return claseRepository.findByClases(nombre);
+    public Optional<Clase> findById(int id) {
+        return Optional.of(claseRepository.findById(id).get());
+    }
+
+    @Override
+    public Optional<Clase> findByNombre(String nombre) {
+        return claseRepository.findByNombre(nombre);
     }
 
     @Override
@@ -33,18 +38,18 @@ public class ClaseServiceImpl implements ClaseService {
     }
 
     @Override
-    public Clase modifyClase(String nombre, Clase newClase) {
-        Clase clase = claseRepository.findByClases(nombre)
-                .orElseThrow(() -> new ClaseNotFoundException(nombre));
+    public Clase modifyClase(int id, Clase newClase) {
+        Clase clase = claseRepository.findById(id)
+                .orElseThrow(() -> new ClaseNotFoundException(id));
         newClase.setNombre(clase.getNombre());
         return claseRepository.save(newClase);
     }
 
     @Override
-    public void deleteClase(String nombre) {
-        claseRepository.findByClases(nombre)
-                .orElseThrow(()-> new ClaseNotFoundException(nombre));
-        claseRepository.deleteById(nombre);
+    public void deleteClase(int id) {
+        claseRepository.findById(id)
+                .orElseThrow(()-> new ClaseNotFoundException(id));
+        claseRepository.deleteById(id);
     }
     }
 

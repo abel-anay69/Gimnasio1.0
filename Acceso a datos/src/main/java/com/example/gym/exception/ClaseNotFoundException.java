@@ -6,7 +6,11 @@ public class ClaseNotFoundException extends RuntimeException{
         super();
     }
 
-    public ClaseNotFoundException(String nombre) {
-        super("Clase not found: " + nombre);
+    public ClaseNotFoundException(String message) {
+        super(message);
+    }
+
+    public ClaseNotFoundException(int id) {
+        super("Clase not found: " + id);
     }
 }

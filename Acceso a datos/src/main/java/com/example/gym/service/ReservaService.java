@@ -8,8 +8,8 @@ import java.util.Set;
 
 public interface ReservaService {
     Set<Reserva> findAll();
-    Optional<Reserva> findByCodigo(int codReserva);
+    Optional<Reserva> findById(int id);
     Reserva addReserva(Reserva reserva);
-    Reserva modifyReserva(int codReserva, Reserva newReserva);
-    void deleteReserva(int codReserva);
+    Reserva modifyReserva(int id, Reserva newReserva);
+    void deleteReserva(int id);
 }

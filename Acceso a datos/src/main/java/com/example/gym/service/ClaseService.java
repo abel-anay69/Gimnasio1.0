@@ -6,9 +6,11 @@ import java.util.Optional;
 import java.util.Set;
 
 public interface ClaseService {
+
     Set<Clase> findAll();
-    Optional<Clase> findByClases(String nombre);
+    Optional<Clase> findById(int id);
+    Optional<Clase> findByNombre(String nombre);
     Clase addClase(Clase clase);
-    Clase modifyClase(String nombre, Clase newClase);
-    void deleteClase(String nombre);
+    Clase modifyClase(int id, Clase newClase);
+    void deleteClase(int id);
 }

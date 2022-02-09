@@ -9,7 +9,8 @@ import java.util.Set;
 public interface ReservaRepository extends CrudRepository<Reserva, String> {
 
     Set<Reserva> findAll();
-    Optional<Reserva> findByCodigo(int codReserva);
-    Reserva modifyReserva(int codReserva, Reserva newReserva);
-    void deleteReserva(int codReserva);
+
+    Optional<Reserva> findById(int id);
+
+    void deleteById(int id);
 }

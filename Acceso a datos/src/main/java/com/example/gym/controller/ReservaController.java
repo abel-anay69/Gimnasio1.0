@@ -32,10 +32,10 @@ public class ReservaController {
                     Response.class)))
     })
 
-    @GetMapping("/reservas/{codReserva}")
-    public ResponseEntity<Reserva> getReservas(@PathVariable int codReserva) {
-        Reserva reserva = reservaService.findByCodigo(codReserva)
-                .orElseThrow(() -> new ReservaNotFoundException(codReserva));
+    @GetMapping("/reservas/{id}")
+    public ResponseEntity<Reserva> getReservas(@PathVariable int id) {
+        Reserva reserva = reservaService.findById(id)
+                .orElseThrow(() -> new ReservaNotFoundException(id));
         return new ResponseEntity<>(reserva, HttpStatus.OK);
     }
 
