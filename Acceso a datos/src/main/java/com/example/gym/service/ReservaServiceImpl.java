@@ -43,6 +43,6 @@ public class ReservaServiceImpl implements ReservaService {
     public void deleteReserva(int codReserva) {
         reservaRepository.findByCodigo(codReserva)
                 .orElseThrow(() -> new ReservaNotFoundException(codReserva));
-        reservaRepository.deleteByCodReserva(codReserva);
+        reservaRepository.deleteReserva(codReserva);
     }
 }

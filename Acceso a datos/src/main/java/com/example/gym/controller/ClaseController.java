@@ -31,7 +31,7 @@ public class ClaseController{
                     @Schema(implementation = Clase.class)))),
     })
 
-    @GetMapping(value ="/ClasesList", produces = "application/json")
+   @GetMapping(value ="/ClasesList", produces = "application/json")
     public ResponseEntity<Set<Clase>> getClasesList(@RequestParam(value =
             "clase", defaultValue = "") String nombre) {
         Set<Clase> clases = null;

@@ -39,7 +39,7 @@ public class Clase {
     @Column
     private String descripcion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Reserva reserva;
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    private Reserva reserva;*/
 }
 
