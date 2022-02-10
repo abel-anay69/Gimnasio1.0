@@ -3,7 +3,7 @@ package com.example.gym.domain;
 import com.example.gym.EntityIdFinder.EntityIdResolver;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -16,14 +16,13 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-@Table (name = "clase")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerator,
+@Entity (name = "clase")
+/*@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
         property="id",
         resolver = EntityIdResolver.class,
         scope = Clase.class
-)
+)*/
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Clase {
 

@@ -13,8 +13,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Entity(name = "reserva")
 public class Reserva {
 
@@ -31,4 +29,9 @@ public class Reserva {
     @Column
     private Time hora;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    private Clase clase;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    private Cliente cliente;
 }

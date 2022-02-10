@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table  (name = "cliente")
+@Entity  (name = "cliente")
 public class Cliente {
 
     @Schema(description = "DNI de cliente", example = "49770662E", required = true)
@@ -34,8 +35,15 @@ public class Cliente {
     @Column
     private int telefono;
 
-   /* @ManyToOne(fetch = FetchType.LAZY)
-    private Reserva reserva;*/
+    @OneToMany(mappedBy = "cliente", orphanRemoval = true, cascade=CascadeType.ALL)
+    private List<Reserva> reservas = new ArrayList<>();
+
+    public String getId() {
+        return dni;
+    }
+    public void setId(String dni) {
+        this.dni = dni;
+    }
 
 }
 
