@@ -2190,7 +2190,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&amp;Clases</string>
+    <string>Clases</string>
    </property>
    <property name="buddy">
     <cstring>lineEdit_Ubi</cstring>
