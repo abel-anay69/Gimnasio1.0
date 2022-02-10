@@ -41,7 +41,7 @@ public class ClaseServiceImpl implements ClaseService {
     public Clase modifyClase(int id, Clase newClase) {
         Clase clase = claseRepository.findById(id)
                 .orElseThrow(() -> new ClaseNotFoundException(id));
-        newClase.setNombre(clase.getNombre());
+        newClase.setId(clase.getId());
         return claseRepository.save(newClase);
     }
 

@@ -38,10 +38,10 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", orphanRemoval = true, cascade=CascadeType.ALL)
     private List<Reserva> reservas = new ArrayList<>();
 
-    public String getId() {
+    public String getDni() {
         return dni;
     }
-    public void setId(String dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 

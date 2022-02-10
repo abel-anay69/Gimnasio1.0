@@ -10,5 +10,5 @@ public interface ReservaService {
     Optional<Reserva> findById(int id);
     Reserva addReserva(Reserva reserva);
     Reserva modifyReserva(long id, Reserva newReserva);
-    void deleteReserva(int id);
+    void deleteReserva(long id);
 }

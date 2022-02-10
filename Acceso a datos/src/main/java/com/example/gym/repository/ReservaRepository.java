@@ -12,5 +12,5 @@ public interface ReservaRepository extends CrudRepository<Reserva, String> {
 
     Optional<Reserva> findById(long id);
 
-    void deleteById(int id);
+    void deleteById(long id);
 }

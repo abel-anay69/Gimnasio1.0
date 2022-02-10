@@ -89,7 +89,7 @@ public class ReservaController {
     })
 
     @DeleteMapping(value ="/reserva/{id}", produces = "application/json")
-    public void deleteReservas(@PathVariable int id)
+    public void deleteReservas(@PathVariable long id)
     {
         reservaService.deleteReserva(id);
     }

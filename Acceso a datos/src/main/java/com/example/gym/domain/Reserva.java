@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.Getter;
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Reserva {
 
     @Schema(description = "Fecha de la reserva", example = "2022-02-22", required = true)
     @Column
-    private Date fecha;
+    private LocalDate fecha;
 
     @Schema(description = "Hora de la reserva", example = "15:22:22", required = true)
     @Column

@@ -36,7 +36,7 @@ public class ClienteController {
                     Response.class)))
     })
 
-    @GetMapping("/cliente/{id}")
+    @GetMapping("/cliente/{dni}")
     public ResponseEntity<Cliente> getCliente(@PathVariable String dni) {
         Cliente clientes = clienteService.findByDni(dni)
                 .orElseThrow(() -> new ClienteNotFoundException(dni));
@@ -65,7 +65,7 @@ public class ClienteController {
                     Response.class)))
     })
 
-    @PutMapping(value ="/cliente/{id}", produces = "application/json", consumes =  "application/json")
+    @PutMapping(value ="/cliente/{dni}", produces = "application/json", consumes =  "application/json")
     public ResponseEntity<Cliente> modifyReserva(@PathVariable String dni,
                                                  @RequestBody Cliente newCliente) {
         Cliente cliente = clienteService.modifyCliente(dni, newCliente);
@@ -81,7 +81,7 @@ public class ClienteController {
                     Response.class)))
     })
 
-    @DeleteMapping(value ="/cliente/{id}", produces = "application/json")
+    @DeleteMapping(value ="/cliente/{dni}", produces = "application/json")
     public void deleteCliente(@PathVariable String dni)
     {
         clienteService.deleteCliente(dni);

@@ -70,4 +70,10 @@ public class ClaseController{
         Clase clase = claseService.modifyClase(id, newClase);
         return new ResponseEntity<>(clase, HttpStatus.OK);
     }
+
+    @DeleteMapping(value ="/clase/{id}", produces = "application/json")
+    public void deleteClase(@PathVariable int id)
+    {
+        claseService.deleteClase(id);
+    }
 }
