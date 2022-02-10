@@ -1,5 +1,9 @@
 package com.example.gym.domain;
 
+import com.example.gym.EntityIdFinder.EntityIdResolver;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +17,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity  (name = "cliente")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property="dni",
+        resolver = EntityIdResolver.class,
+        scope = Cliente.class
+)
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Cliente {
 
     @Schema(description = "DNI de cliente", example = "49770662E", required = true)

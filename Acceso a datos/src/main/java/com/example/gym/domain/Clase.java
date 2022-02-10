@@ -17,12 +17,12 @@ import java.util.List;
 @Getter
 @Setter
 @Entity (name = "clase")
-/*@JsonIdentityInfo(
+@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property="id",
         resolver = EntityIdResolver.class,
         scope = Clase.class
-)*/
+)
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Clase {
 
