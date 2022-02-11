@@ -22,14 +22,6 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Schema(description = "Fecha de la reserva", example = "2022-02-22", required = true)
-    @Column
-    private LocalDate fecha;
-
-    @Schema(description = "Hora de la reserva", example = "15:22:22", required = true)
-    @Column
-    private Time hora;
-
     @ManyToOne(fetch=FetchType.LAZY)
     private Clase clase;
 
