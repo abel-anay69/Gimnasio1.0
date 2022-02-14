@@ -5,6 +5,7 @@
  **
  ** WARNING! All changes made in this file will be lost when recompiling ui file!
  ********************************************************************************/
+package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
 
@@ -19,6 +20,13 @@ public class Reservas implements com.trolltech.qt.QUiForm<QDialog>
     public QPushButton pushButton;
 
     public Reservas() { super(); }
+    
+    void crear(){
+        CrearReserva cr = new CrearReserva();
+        QDialog dialog = new QDialog();
+        cr.setupUi(dialog);
+        dialog.show();
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -126,6 +134,7 @@ public class Reservas implements com.trolltech.qt.QUiForm<QDialog>
         font.setPointSize(26);
         pushButton_Crear.setFont(font);
         pushButton_Crear.setMouseTracking(false);
+        pushButton_Crear.clicked.connect(this, "crear()");
         pushButton_Modificar = new QPushButton(Dialog);
         pushButton_Modificar.setObjectName("pushButton_Modificar");
         pushButton_Modificar.setGeometry(new QRect(190, 290, 211, 71));
@@ -378,7 +387,7 @@ public class Reservas implements com.trolltech.qt.QUiForm<QDialog>
         palette6.setColor(QPalette.ColorGroup.Disabled, QPalette.ColorRole.HighlightedText, new QColor(0, 0, 0));
         pushButton.setPalette(palette6);
         pushButton.setStyleSheet("background-Color:rgb(255, 255, 255)");
-        pushButton.setIcon(new QIcon(new QPixmap("Logo/pngwing.com.png")));
+        pushButton.setIcon(new QIcon(new QPixmap("Logo/atras.png")));
         pushButton.setIconSize(new QSize(50, 50));
         retranslateUi(Dialog);
 

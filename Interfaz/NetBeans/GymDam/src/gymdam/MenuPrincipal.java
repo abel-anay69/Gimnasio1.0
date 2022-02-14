@@ -18,6 +18,13 @@ public class MenuPrincipal implements com.trolltech.qt.QUiForm<QDialog>
     public QPushButton pushButton_Clientes_2;
 
     public MenuPrincipal() { super(); }
+    
+    void reservas(){
+        Reservas reservas = new Reservas();
+        QDialog dialog = new QDialog();
+        reservas.setupUi(dialog);
+        dialog.show();
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -179,6 +186,7 @@ public class MenuPrincipal implements com.trolltech.qt.QUiForm<QDialog>
         font1.setPointSize(26);
         pushButton_Reservas.setFont(font1);
         pushButton_Reservas.setMouseTracking(false);
+        pushButton_Reservas.clicked.connect(this, "reservas()");
         pushButton_Clientes = new QPushButton(Dialog);
         pushButton_Clientes.setObjectName("pushButton_Clientes");
         pushButton_Clientes.setGeometry(new QRect(570, 260, 231, 91));
