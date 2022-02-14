@@ -1,8 +1,7 @@
 package com.example.gym.controller;
 
 import com.example.gym.domain.Clase;
-import com.example.gym.domain.Reserva;
-import com.example.gym.exception.ReservaNotFoundException;
+import com.example.gym.exception.ClaseNotFoundException;
 import com.example.gym.service.ClaseService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -40,6 +39,7 @@ public class ClaseController{
         Optional<Clase> clase = null;
         if (nombre.equals(""))
             clases = claseService.findAll();
+            //List<Clase> clase1 = claseService.findByClase_Fecha();
         else
             clase = claseService.findByNombre(nombre);
         return new ResponseEntity<>(clases, HttpStatus.OK);
@@ -48,7 +48,13 @@ public class ClaseController{
     @GetMapping("/clase/{id}")
     public ResponseEntity<Clase> getClase(@PathVariable int id) {
         Clase clase = claseService.findById(id)
-                .orElseThrow(() -> new ReservaNotFoundException(id));
+                .orElseThrow(() -> new ClaseNotFoundException(id));
+        return new ResponseEntity<>(clase, HttpStatus.OK);
+    }
+
+    @GetMapping("/clase/fechaClase/{fecha}")
+    public ResponseEntity<Set<Clase>> getClase(@PathVariable String fecha) {
+        Set<Clase> clase = claseService.findByFecha(fecha);
         return new ResponseEntity<>(clase, HttpStatus.OK);
     }
 

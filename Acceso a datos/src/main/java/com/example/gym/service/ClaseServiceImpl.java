@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-import java.util.Set;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 @Transactional
@@ -51,5 +53,22 @@ public class ClaseServiceImpl implements ClaseService {
                 .orElseThrow(()-> new ClaseNotFoundException(id));
         claseRepository.deleteById(id);
     }
+
+    @Override
+    public Set<Clase> findByFecha(String fecha) {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Set<Clase> fechas = claseRepository.findAll();
+        Set<Clase> fechasDia = new HashSet<>();
+
+            for (Clase cla: fechas) {
+                if (cla.getFecha().compareTo(LocalDate.parse(fecha)) == 0){
+                    fechasDia.add(cla);
+                }
+            }
+
+        return fechasDia;
+
     }
+
+}
 
