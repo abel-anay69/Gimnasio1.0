@@ -5,6 +5,7 @@
  **
  ** WARNING! All changes made in this file will be lost when recompiling ui file!
  ********************************************************************************/
+package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
 
@@ -73,7 +74,7 @@ public class ListaParaModificarClases implements com.trolltech.qt.QUiForm<QDialo
         label_2 = new QLabel(Dialog);
         label_2.setObjectName("label_2");
         label_2.setGeometry(new QRect(300, 20, 451, 101));
-        label_2.setPixmap(new QPixmap(("../../Logo/OlympusTextBlanco.png")));
+        label_2.setPixmap(new QPixmap(("Logo/OlympusTextBlanco.png")));
         label_2.setScaledContents(true);
         textoBorrar_2 = new QLabel(Dialog);
         textoBorrar_2.setObjectName("textoBorrar_2");
@@ -235,8 +236,11 @@ public class ListaParaModificarClases implements com.trolltech.qt.QUiForm<QDialo
         palette5.setColor(QPalette.ColorGroup.Disabled, QPalette.ColorRole.HighlightedText, new QColor(0, 0, 0));
         pushButton_atras_3.setPalette(palette5);
         pushButton_atras_3.setStyleSheet("background-Color:rgb(255, 255, 255)");
-        pushButton_atras_3.setIcon(new QIcon(new QPixmap("../../Logo/atras.png")));
+        pushButton_atras_3.setIcon(new QIcon(new QPixmap("Logo/atras.png")));
         pushButton_atras_3.setIconSize(new QSize(50, 50));
+        
+        pushButton_atras_3.clicked.connect(Dialog, "close()");
+        
         QWidget.setTabOrder(spinBox, pushButton_modificar);
         retranslateUi(Dialog);
 

@@ -245,9 +245,7 @@ public class ListaParaModificarReserva implements com.trolltech.qt.QUiForm<QDial
         pushButton_2.setStyleSheet("background-Color:rgb(255, 255, 255)");
         pushButton_2.setIcon(new QIcon(new QPixmap("Logo/atras.png")));
         pushButton_2.setIconSize(new QSize(50, 50));
-        
         pushButton_2.clicked.connect(Dialog, "close()");
-        
         QWidget.setTabOrder(tableView_2, spinBox);
         QWidget.setTabOrder(spinBox, pushButton_modificar);
         retranslateUi(Dialog);

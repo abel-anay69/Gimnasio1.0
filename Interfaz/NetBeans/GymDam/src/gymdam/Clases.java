@@ -26,6 +26,13 @@ public class Clases implements com.trolltech.qt.QUiForm<QDialog>
         cc.setupUi(dialog);
         dialog.show();
     }
+    
+    void modificar(){
+        ListaParaModificarClases lpmc = new ListaParaModificarClases();
+        QDialog dialog = new QDialog();
+        lpmc.setupUi(dialog);
+        dialog.show();
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -133,6 +140,9 @@ public class Clases implements com.trolltech.qt.QUiForm<QDialog>
         font.setPointSize(26);
         pushButton_Modificar.setFont(font);
         pushButton_Modificar.setMouseTracking(false);
+        
+        pushButton_Modificar.clicked.connect(this, "modificar()");
+        
         pushButton_Eliminar = new QPushButton(Dialog);
         pushButton_Eliminar.setObjectName("pushButton_Eliminar");
         pushButton_Eliminar.setGeometry(new QRect(170, 420, 231, 91));

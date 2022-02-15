@@ -5,10 +5,11 @@
  **
  ** WARNING! All changes made in this file will be lost when recompiling ui file!
  ********************************************************************************/
+package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
 
-public class Ui_Dialog implements com.trolltech.qt.QUiForm<QDialog>
+public class MenuPrincipal implements com.trolltech.qt.QUiForm<QDialog>
 {
     public QPushButton pushButton_Clases;
     public QPushButton pushButton_Reservas;
@@ -16,7 +17,21 @@ public class Ui_Dialog implements com.trolltech.qt.QUiForm<QDialog>
     public QLabel label;
     public QPushButton pushButton_Clientes_2;
 
-    public Ui_Dialog() { super(); }
+    public MenuPrincipal() { super(); }
+    
+    void reservas(){
+        Reservas reservas = new Reservas();
+        QDialog dialog = new QDialog();
+        reservas.setupUi(dialog);
+        dialog.show();
+    }
+    
+    void clases(){
+        Clases clases = new Clases();
+        QDialog dialog = new QDialog();
+        clases.setupUi(dialog);
+        dialog.show();
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -72,6 +87,9 @@ public class Ui_Dialog implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_Clases = new QPushButton(Dialog);
         pushButton_Clases.setObjectName("pushButton_Clases");
         pushButton_Clases.setGeometry(new QRect(570, 150, 231, 91));
+        
+        pushButton_Clases.clicked.connect(this, "clases()");
+        
         QPalette palette1= new QPalette();
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, new QColor(0, 0, 0));
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, new QColor(116, 157, 156));
@@ -178,6 +196,9 @@ public class Ui_Dialog implements com.trolltech.qt.QUiForm<QDialog>
         font1.setPointSize(26);
         pushButton_Reservas.setFont(font1);
         pushButton_Reservas.setMouseTracking(false);
+        
+        pushButton_Reservas.clicked.connect(this, "reservas()");
+        
         pushButton_Clientes = new QPushButton(Dialog);
         pushButton_Clientes.setObjectName("pushButton_Clientes");
         pushButton_Clientes.setGeometry(new QRect(570, 260, 231, 91));
@@ -235,7 +256,7 @@ public class Ui_Dialog implements com.trolltech.qt.QUiForm<QDialog>
         label = new QLabel(Dialog);
         label.setObjectName("label");
         label.setGeometry(new QRect(10, 20, 401, 451));
-        label.setPixmap(new QPixmap(("../../Logo/logo.PNG")));
+        label.setPixmap(new QPixmap(("Logo/logo.PNG")));
         pushButton_Clientes_2 = new QPushButton(Dialog);
         pushButton_Clientes_2.setObjectName("pushButton_Clientes_2");
         pushButton_Clientes_2.setGeometry(new QRect(570, 370, 231, 91));
