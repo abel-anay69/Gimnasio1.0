@@ -25,6 +25,13 @@ public class MenuPrincipal implements com.trolltech.qt.QUiForm<QDialog>
         reservas.setupUi(dialog);
         dialog.show();
     }
+    
+    void clases(){
+        Clases clases = new Clases();
+        QDialog dialog = new QDialog();
+        clases.setupUi(dialog);
+        dialog.show();
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -80,6 +87,9 @@ public class MenuPrincipal implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_Clases = new QPushButton(Dialog);
         pushButton_Clases.setObjectName("pushButton_Clases");
         pushButton_Clases.setGeometry(new QRect(570, 150, 231, 91));
+        
+        pushButton_Clases.clicked.connect(this, "clases()");
+        
         QPalette palette1= new QPalette();
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, new QColor(0, 0, 0));
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, new QColor(116, 157, 156));
@@ -186,7 +196,9 @@ public class MenuPrincipal implements com.trolltech.qt.QUiForm<QDialog>
         font1.setPointSize(26);
         pushButton_Reservas.setFont(font1);
         pushButton_Reservas.setMouseTracking(false);
+        
         pushButton_Reservas.clicked.connect(this, "reservas()");
+        
         pushButton_Clientes = new QPushButton(Dialog);
         pushButton_Clientes.setObjectName("pushButton_Clientes");
         pushButton_Clientes.setGeometry(new QRect(570, 260, 231, 91));
