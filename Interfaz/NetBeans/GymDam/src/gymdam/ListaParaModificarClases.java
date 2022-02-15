@@ -19,6 +19,13 @@ public class ListaParaModificarClases implements com.trolltech.qt.QUiForm<QDialo
     public QPushButton pushButton_atras_3;
 
     public ListaParaModificarClases() { super(); }
+    
+    void modificar(){
+        ModificarClases mc = new ModificarClases();
+        QDialog dialog = new QDialog();
+        mc.setupUi(dialog);
+        dialog.show();
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -144,6 +151,9 @@ public class ListaParaModificarClases implements com.trolltech.qt.QUiForm<QDialo
         pushButton_modificar = new QPushButton(Dialog);
         pushButton_modificar.setObjectName("pushButton_modificar");
         pushButton_modificar.setGeometry(new QRect(600, 410, 81, 41));
+        
+        pushButton_modificar.clicked.connect(this, "modificar()");
+        
         QPalette palette3= new QPalette();
         palette3.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette3.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));
@@ -155,6 +165,7 @@ public class ListaParaModificarClases implements com.trolltech.qt.QUiForm<QDialo
         palette3.setColor(QPalette.ColorGroup.Disabled, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));
         palette3.setColor(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, new QColor(0, 0, 0));
         pushButton_modificar.setPalette(palette3);
+        
         QFont font1 = new QFont();
         font1.setFamily("Onyx");
         font1.setPointSize(15);

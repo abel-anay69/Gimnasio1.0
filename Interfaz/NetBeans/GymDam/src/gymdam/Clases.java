@@ -33,6 +33,13 @@ public class Clases implements com.trolltech.qt.QUiForm<QDialog>
         lpmc.setupUi(dialog);
         dialog.show();
     }
+    
+    void eliminar(){
+        EliminarClase ec = new EliminarClase();
+        QDialog dialog = new QDialog();
+        ec.setupUi(dialog);
+        dialog.show();
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -146,6 +153,9 @@ public class Clases implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_Eliminar = new QPushButton(Dialog);
         pushButton_Eliminar.setObjectName("pushButton_Eliminar");
         pushButton_Eliminar.setGeometry(new QRect(170, 420, 231, 91));
+        
+        pushButton_Eliminar.clicked.connect(this, "eliminar()");
+        
         QPalette palette2= new QPalette();
         palette2.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, new QColor(0, 0, 0));
         palette2.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, new QColor(116, 157, 156));

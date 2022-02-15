@@ -859,7 +859,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Dime la ID del cliente que desees borrar</string>
+    <string>Dime la ID de la reserva que desees borrar</string>
    </property>
    <property name="buddy">
     <cstring>lineEdit</cstring>

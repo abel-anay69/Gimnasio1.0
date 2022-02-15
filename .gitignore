@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 /Interfaz/NetBeans/GymDam/nbproject/private/
+/Interfaz/NetBeans/GymDam/dist/

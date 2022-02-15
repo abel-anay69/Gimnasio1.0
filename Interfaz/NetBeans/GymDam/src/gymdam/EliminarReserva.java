@@ -190,7 +190,7 @@ public class EliminarReserva implements com.trolltech.qt.QUiForm<QDialog>
     void retranslateUi(QDialog Dialog)
     {
         Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
-        textoBorrar_3.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dime la ID del cliente que desees borrar", null));
+        textoBorrar_3.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dime la ID de la reserva que desees borrar", null));
         pushButton_borrar.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Borrar", null));
         pushButton_atras.setText("");
     } // retranslateUi
