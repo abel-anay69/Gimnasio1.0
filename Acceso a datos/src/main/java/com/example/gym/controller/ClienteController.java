@@ -43,10 +43,10 @@ public class ClienteController {
         return new ResponseEntity<>(clientes, HttpStatus.OK);
     }
 
-    @Operation(summary = "Registra una nueva cliente")
+    @Operation(summary = "Registra un nueva cliente")
     @ApiResponses(value = {
 
-            @ApiResponse(responseCode = "200", description = "Se registra la cliente", content = @Content(schema = @Schema(implementation =
+            @ApiResponse(responseCode = "200", description = "Se registra el cliente", content = @Content(schema = @Schema(implementation =
                     Cliente.class)))
     })
 
@@ -57,11 +57,11 @@ public class ClienteController {
         return new ResponseEntity<>(addedCliente, HttpStatus.OK);
     }
 
-    @Operation(summary = "Modifica una cliente en la lista")
+    @Operation(summary = "Modifica un cliente en la lista")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Se modifica una clientes", content = @Content(schema = @Schema(implementation =
+            @ApiResponse(responseCode = "200", description = "Se modifica un clientes", content = @Content(schema = @Schema(implementation =
                     Cliente.class))),
-            @ApiResponse(responseCode = "404", description = "La clientes no existe", content = @Content(schema = @Schema(implementation =
+            @ApiResponse(responseCode = "404", description = "El clientes no existe", content = @Content(schema = @Schema(implementation =
                     Response.class)))
     })
 
@@ -73,11 +73,11 @@ public class ClienteController {
     }
 
 
-    @Operation(summary = "Elimina un vuelo")
+    @Operation(summary = "Elimina un cliente")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Se elimina la cliente", content = @Content(schema = @Schema(implementation =
+            @ApiResponse(responseCode = "200", description = "Se elimina el cliente", content = @Content(schema = @Schema(implementation =
                     Response.class))),
-            @ApiResponse(responseCode = "404", description = "La cliente no existe", content = @Content(schema = @Schema(implementation =
+            @ApiResponse(responseCode = "404", description = "El cliente no existe", content = @Content(schema = @Schema(implementation =
                     Response.class)))
     })
 

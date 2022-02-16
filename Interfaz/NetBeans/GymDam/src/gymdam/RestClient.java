@@ -48,14 +48,29 @@ public class RestClient {
     
     public void modificarCLiente(Cliente c){
         
-        
-        
         try{
             
             WebTarget wt = this.client.target("http://localhost:8080/cliente/" +c.getDni());
             Invocation.Builder invocationBuilder = wt.request(MediaType.APPLICATION_JSON);
             
-            Response response = invocationBuilder.post(Entity.entity(c.toString(),MediaType.APPLICATION_JSON));
+            Response response = invocationBuilder.put(Entity.entity(c.toString(),MediaType.APPLICATION_JSON));
+            System.out.println(response.getStatus());
+            System.out.println(response.readEntity(String.class));
+            System.out.println();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+         }
+    }
+    
+    public void eliminarCLiente(String dni){
+        
+        try{
+            
+            WebTarget wt = this.client.target("http://localhost:8080/cliente/" + dni);
+            Invocation.Builder invocationBuilder = wt.request(MediaType.APPLICATION_JSON);
+            
+            Response response = invocationBuilder.delete();
             System.out.println(response.getStatus());
             System.out.println(response.readEntity(String.class));
             System.out.println();

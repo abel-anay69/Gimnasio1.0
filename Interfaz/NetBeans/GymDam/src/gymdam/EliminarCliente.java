@@ -8,6 +8,7 @@
 package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import static java.lang.Integer.parseInt;
 
 public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -17,6 +18,19 @@ public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
     public QPushButton pushButton_atras_4;
 
     public EliminarCliente() { super(); }
+    
+    void eliminar(){
+        String dni;
+        
+        
+        dni = lineEdit_Borrar.text();
+       
+        
+        RestClient rest = new RestClient();
+        
+        rest.eliminarCLiente(dni);
+    }
+
 
     public void setupUi(QDialog Dialog)
     {
@@ -29,7 +43,7 @@ public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Midlight, new QColor(0, 0, 0));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Dark, new QColor(0, 0, 0));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Mid, new QColor(0, 0, 0));
-        palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(255, 255, 255));
+        palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(255, 255, 255));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, new QColor(255, 255, 255));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, new QColor(0, 0, 0));
@@ -129,6 +143,9 @@ public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_3 = new QPushButton(Dialog);
         pushButton_3.setObjectName("pushButton_3");
         pushButton_3.setGeometry(new QRect(170, 160, 91, 41));
+        
+        pushButton_3.clicked.connect(this, "eliminar()");
+        
         QPalette palette2= new QPalette();
         palette2.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette2.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));
