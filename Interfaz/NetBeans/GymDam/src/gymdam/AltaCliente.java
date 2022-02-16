@@ -8,6 +8,7 @@
 package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import static java.lang.Integer.parseInt;
 
 public class AltaCliente implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -26,6 +27,32 @@ public class AltaCliente implements com.trolltech.qt.QUiForm<QDialog>
     public QPushButton pushButton_atras_3;
 
     public AltaCliente() { super(); }
+    
+    void crear(){
+        String dni;
+        String nombre;
+        String apellidos;
+        String direccion;
+        String telefono;
+        
+        dni = lineEdit_Ubi_2.text();
+        
+        nombre = lineEdit_nombre_2.text();
+        
+        apellidos = lineEdit.text();
+        
+        direccion = lineEdit_Monitor_2.text();
+        
+        telefono = lineEdit_descripcion_2.text();
+        
+        Cliente c = new Cliente(dni, nombre, apellidos, direccion, parseInt(telefono));
+        
+        RestClient rest = new RestClient();
+        
+        rest.insertarCliente(c);
+        
+        
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -249,6 +276,9 @@ public class AltaCliente implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_alta = new QPushButton(Dialog);
         pushButton_alta.setObjectName("pushButton_alta");
         pushButton_alta.setGeometry(new QRect(250, 510, 91, 41));
+        
+        pushButton_alta.clicked.connect(this, "crear()");
+        
         QPalette palette9= new QPalette();
         palette9.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette9.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));

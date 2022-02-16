@@ -8,6 +8,7 @@
 package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import static java.lang.Integer.parseInt;
 
 public class ModificarCliente implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -26,6 +27,32 @@ public class ModificarCliente implements com.trolltech.qt.QUiForm<QDialog>
     public QPushButton pushButton_atras_4;
 
     public ModificarCliente() { super(); }
+    
+    void modificar(){
+        String dni;
+        String nombre;
+        String apellidos;
+        String direccion;
+        String telefono;
+        
+        dni = lineEdit_DNI.text();
+        
+        nombre = lineEdit_nombre.text();
+        
+        apellidos = lineEdit_Apellidos.text();
+        
+        direccion = lineEdit_Direccion.text();
+        
+        telefono = lineEdit_Telefono.text();
+        
+        Cliente c = new Cliente(dni, nombre, apellidos, direccion, parseInt(telefono));
+        
+        RestClient rest = new RestClient();
+        
+        rest.insertarCliente(c);
+        
+        
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -155,6 +182,9 @@ public class ModificarCliente implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_Modificar = new QPushButton(Dialog);
         pushButton_Modificar.setObjectName("pushButton_Modificar");
         pushButton_Modificar.setGeometry(new QRect(250, 510, 91, 41));
+        
+        pushButton_Modificar.clicked.connect(this, "modificar()");
+        
         QPalette palette4= new QPalette();
         palette4.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette4.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));

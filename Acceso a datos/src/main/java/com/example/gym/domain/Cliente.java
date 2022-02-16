@@ -30,19 +30,19 @@ public class Cliente {
     @Id
     private String dni;
 
-    @Schema(description = "Nombre del cliente", example = "Abelardo", required = true)
+    @Schema(description = "Nombre del cliente", example = "Abelardo", required = false)
     @Column
     private String nombre;
 
-    @Schema(description = "Apellidos del cliente", example = "Anayas Pardus", required = true)
+    @Schema(description = "Apellidos del cliente", example = "Anayas Pardus", required = false)
     @Column
     private String apellidos;
 
-    @Schema(description = "Direccion del cliente", example = "Avd. Relleu", required = true)
+    @Schema(description = "Direccion del cliente", example = "Avd. Relleu", required = false)
     @Column
     private String direccion;
 
-    @Schema(description = "Telefono del cliebte", example = "657123997", required = true)
+    @Schema(description = "Telefono del cliebte", example = "657123997", required = false)
     @Column
     private int telefono;
 
