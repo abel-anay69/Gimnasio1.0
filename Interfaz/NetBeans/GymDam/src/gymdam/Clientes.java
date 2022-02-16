@@ -26,6 +26,20 @@ public class Clientes implements com.trolltech.qt.QUiForm<QDialog>
         ac.setupUi(dialog);
         dialog.show();
     }
+    
+    void modificar(){
+        ListaParaModificarClientes lpmcli = new ListaParaModificarClientes();
+        QDialog dialog = new QDialog();
+        lpmcli.setupUi(dialog);
+        dialog.show();
+    }
+    
+    void eliminar(){
+        EliminarCliente ecli = new EliminarCliente();
+        QDialog dialog = new QDialog();
+        ecli.setupUi(dialog);
+        dialog.show();
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -201,6 +215,9 @@ public class Clientes implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_baja = new QPushButton(Dialog);
         pushButton_baja.setObjectName("pushButton_baja");
         pushButton_baja.setGeometry(new QRect(150, 420, 231, 91));
+        
+        pushButton_baja.clicked.connect(this, "eliminar()");
+        
         QPalette palette3= new QPalette();
         palette3.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, new QColor(0, 0, 0));
         palette3.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, new QColor(116, 157, 156));
@@ -256,6 +273,9 @@ public class Clientes implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_Modificar_2 = new QPushButton(Dialog);
         pushButton_Modificar_2.setObjectName("pushButton_Modificar_2");
         pushButton_Modificar_2.setGeometry(new QRect(150, 310, 231, 91));
+        
+        pushButton_Modificar_2.clicked.connect(this, "modificar()");
+        
         QPalette palette4= new QPalette();
         palette4.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, new QColor(0, 0, 0));
         palette4.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, new QColor(116, 157, 156));
