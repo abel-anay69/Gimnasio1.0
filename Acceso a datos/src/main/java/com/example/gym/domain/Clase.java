@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +62,7 @@ public class Clase {
 
     @Schema(description = "Hora de la reserva", example = "15:22:22", required = true)
     @Column
-    private Time hora;
+    private LocalTime hora;
 
     @OneToMany(mappedBy = "clase", orphanRemoval = true, cascade=CascadeType.ALL)
     private List<Reserva> reservas = new ArrayList<>();

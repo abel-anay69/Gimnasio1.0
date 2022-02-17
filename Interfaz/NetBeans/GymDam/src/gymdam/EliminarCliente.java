@@ -9,6 +9,8 @@ package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
 import static java.lang.Integer.parseInt;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -16,11 +18,27 @@ public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
     public QLineEdit lineEdit_Borrar;
     public QPushButton pushButton_3;
     public QPushButton pushButton_atras_4;
+    JFrame jFrame = new JFrame();
 
     public EliminarCliente() { super(); }
     
     void eliminar(){
         String dni;
+        
+        try{
+             dni = lineEdit_Borrar.text();
+       
+        
+            RestClient rest = new RestClient();
+        
+            rest.eliminarCLiente(dni);
+        
+            JOptionPane.showMessageDialog(jFrame, "Cliente eliminado correctamente");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(jFrame, "Error al eliminar cliente");
+        }
         
         
         dni = lineEdit_Borrar.text();
@@ -29,6 +47,9 @@ public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
         RestClient rest = new RestClient();
         
         rest.eliminarCLiente(dni);
+        
+        
+        JOptionPane.showMessageDialog(jFrame, "Cliente eliminado correctamente");
     }
 
 
@@ -200,7 +221,7 @@ public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
 
     void retranslateUi(QDialog Dialog)
     {
-        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
+        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("GymDam", "GymDam", null));
         textoBorrar_2.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dime el DNI del cliente que desees borrar", null));
         pushButton_3.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Borrar", null));
         pushButton_atras_4.setText("");

@@ -252,7 +252,7 @@ public class ListaParaModificarClientes implements com.trolltech.qt.QUiForm<QDia
 
     void retranslateUi(QDialog Dialog)
     {
-        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
+        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("GymDam", "GymDam", null));
         pushButton_modificar.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Modificar", null));
         textoBorrar_3.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dime el DNI del cliente que quieres modificar", null));
         label_3.setText("");

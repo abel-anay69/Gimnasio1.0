@@ -331,7 +331,7 @@ public class MenuPrincipal implements com.trolltech.qt.QUiForm<QDialog>
 
     void retranslateUi(QDialog Dialog)
     {
-        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
+        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("GymDam", "GymDam", null));
         pushButton_Clases.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Clases", null));
         pushButton_Reservas.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Reservas", null));
         pushButton_Clientes.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Clientes", null));

@@ -369,7 +369,7 @@ public class Clientes implements com.trolltech.qt.QUiForm<QDialog>
 
     void retranslateUi(QDialog Dialog)
     {
-        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
+        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("GymDam", "GymDam", null));
         pushButton_Alta.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dar de alta", null));
         label_2.setText("");
         Ubi_3.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Clientes", null));

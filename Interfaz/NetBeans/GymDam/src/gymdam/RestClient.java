@@ -29,8 +29,6 @@ public class RestClient {
     
     public void insertarCliente(Cliente c){
         
-        
-        
         try{
             
             WebTarget wt = this.client.target("http://localhost:8080/cliente");
@@ -79,4 +77,59 @@ public class RestClient {
             e.printStackTrace();
          }
     }
+    
+    public void insertarClase(Clase clase){
+        
+        try{
+            
+            WebTarget wt = this.client.target("http://localhost:8080/clase");
+            Invocation.Builder invocationBuilder = wt.request(MediaType.APPLICATION_JSON);
+            
+            Response response = invocationBuilder.post(Entity.entity(clase.toString(),MediaType.APPLICATION_JSON));
+            System.out.println(response.getStatus());
+            System.out.println(response.readEntity(String.class));
+            System.out.println();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+         }
+    }
+    
+    public void modificarClase(Clase clase){
+        
+        System.out.println(clase.toString());
+        
+        try{
+            
+            WebTarget wt = this.client.target("http://localhost:8080/clase/" +clase.getId());
+            Invocation.Builder invocationBuilder = wt.request(MediaType.APPLICATION_JSON);
+            
+            Response response = invocationBuilder.put(Entity.entity(clase.toString(),MediaType.APPLICATION_JSON));
+            System.out.println(response.getStatus());
+            System.out.println(response.readEntity(String.class));
+            System.out.println();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+         }
+    }
+    
+    public void eliminarClase(String nombre){
+        
+        try{
+            
+            WebTarget wt = this.client.target("http://localhost:8080/cliente/" + nombre);
+            Invocation.Builder invocationBuilder = wt.request(MediaType.APPLICATION_JSON);
+            
+            Response response = invocationBuilder.delete();
+            System.out.println(response.getStatus());
+            System.out.println(response.readEntity(String.class));
+            System.out.println();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+         }
+    }
+    
+    
 }

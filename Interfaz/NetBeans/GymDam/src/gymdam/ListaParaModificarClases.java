@@ -17,15 +17,20 @@ public class ListaParaModificarClases implements com.trolltech.qt.QUiForm<QDialo
     public QPushButton pushButton_modificar;
     public QTableView tableView;
     public QPushButton pushButton_atras_3;
+    
 
     public ListaParaModificarClases() { super(); }
     
     void modificar(){
-        ModificarClases mc = new ModificarClases();
+        
+        int id = spinBox.value();
+        ModificarClases mc = new ModificarClases(id);
         QDialog dialog = new QDialog();
         mc.setupUi(dialog);
         dialog.show();
+        
     }
+   
 
     public void setupUi(QDialog Dialog)
     {

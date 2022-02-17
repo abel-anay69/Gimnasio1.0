@@ -9,6 +9,8 @@ package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
 import static java.lang.Integer.parseInt;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class AltaCliente implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -25,6 +27,7 @@ public class AltaCliente implements com.trolltech.qt.QUiForm<QDialog>
     public QLabel Nombre_2;
     public QLineEdit lineEdit;
     public QPushButton pushButton_atras_3;
+    JFrame jFrame = new JFrame();
 
     public AltaCliente() { super(); }
     
@@ -35,21 +38,31 @@ public class AltaCliente implements com.trolltech.qt.QUiForm<QDialog>
         String direccion;
         String telefono;
         
-        dni = lineEdit_Ubi_2.text();
+        try{
+            dni = lineEdit_Ubi_2.text();
         
-        nombre = lineEdit_nombre_2.text();
+            nombre = lineEdit_nombre_2.text();
+
+            apellidos = lineEdit.text();
+
+            direccion = lineEdit_Monitor_2.text();
+
+            telefono = lineEdit_descripcion_2.text();
+
+            Cliente c = new Cliente(dni, nombre, apellidos, direccion, parseInt(telefono));
+
+            RestClient rest = new RestClient();
+
+            rest.insertarCliente(c);
+
+            JOptionPane.showMessageDialog(jFrame, "Cliente insertado correctamente");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(jFrame, "Error al insertar cliente");
+        }
         
-        apellidos = lineEdit.text();
         
-        direccion = lineEdit_Monitor_2.text();
-        
-        telefono = lineEdit_descripcion_2.text();
-        
-        Cliente c = new Cliente(dni, nombre, apellidos, direccion, parseInt(telefono));
-        
-        RestClient rest = new RestClient();
-        
-        rest.insertarCliente(c);
         
         
     }
@@ -279,6 +292,7 @@ public class AltaCliente implements com.trolltech.qt.QUiForm<QDialog>
         
         pushButton_alta.clicked.connect(this, "crear()");
         
+        
         QPalette palette9= new QPalette();
         palette9.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette9.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));
@@ -400,7 +414,7 @@ public class AltaCliente implements com.trolltech.qt.QUiForm<QDialog>
 
     void retranslateUi(QDialog Dialog)
     {
-        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
+        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("GymDam", "GymDam", null));
         lineEdit_Ubi_2.setText("");
         DNI.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "&DNI:", null));
         lineEdit_Monitor_2.setText("");

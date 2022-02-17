@@ -365,7 +365,7 @@ public class Clases implements com.trolltech.qt.QUiForm<QDialog>
 
     void retranslateUi(QDialog Dialog)
     {
-        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
+        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("GymDam", "GymDam", null));
         pushButton_Modificar.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Modificar", null));
         pushButton_Eliminar.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Eliminar", null));
         label.setText("");

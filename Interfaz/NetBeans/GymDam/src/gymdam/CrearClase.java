@@ -6,8 +6,15 @@
  ** WARNING! All changes made in this file will be lost when recompiling ui file!
  ********************************************************************************/
 package gymdam;
+import static com.trolltech.qt.QNativePointer.Type.String;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import java.time.LocalDate;
+import static java.time.LocalDate.parse;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class CrearClase implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -28,8 +35,44 @@ public class CrearClase implements com.trolltech.qt.QUiForm<QDialog>
     public QLabel Nombre_3;
     public QLabel Ubi_3;
     public QPushButton pushButton_atras_2;
+    JFrame jFrame = new JFrame();
 
     public CrearClase() { super(); }
+    
+    void crear(){
+        String ubicacion;
+        String nombre;
+        int capacidad;
+        String monitor;
+        String descripcion;
+        String fecha;
+        String hora;
+        
+        try{
+           ubicacion = lineEdit_Ubi.text();
+           nombre = lineEdit_nombre.text();
+           capacidad = spinBox_capacidad.value();
+           monitor = lineEdit_Monitor.text();
+           descripcion = lineEdit_descripcion.text();
+           fecha = dateEdit.text();
+           hora = timeEdit.text();
+           
+           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+           
+           Clase clase = new Clase(ubicacion, nombre, capacidad, monitor, descripcion, LocalDate.parse(fecha, formatter), LocalTime.parse(hora));
+           
+           RestClient rest = new RestClient();
+           
+           rest.insertarClase(clase);
+           
+           JOptionPane.showMessageDialog(jFrame, "Clase insertada correctamente");
+           
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(jFrame, "Error al insertar clase");
+        }
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -317,6 +360,9 @@ public class CrearClase implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_crear = new QPushButton(Dialog);
         pushButton_crear.setObjectName("pushButton_crear");
         pushButton_crear.setGeometry(new QRect(250, 570, 91, 41));
+        
+        pushButton_crear.clicked.connect(this, "crear()");
+        
         QPalette palette11= new QPalette();
         palette11.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette11.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));

@@ -8,6 +8,12 @@
 package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 
 public class ModificarClases implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -28,8 +34,51 @@ public class ModificarClases implements com.trolltech.qt.QUiForm<QDialog>
     public QDateEdit dateEdit;
     public QTimeEdit timeEdit;
     public QPushButton pushButton_atras_2;
+    JFrame jFrame = new JFrame();
+    private int id;
 
     public ModificarClases() { super(); }
+    
+    public ModificarClases(int id) {
+        super(); 
+        this.id = id;
+    }
+    
+    void modificar(){
+        String ubicacion;
+        String nombre;
+        int capacidad;
+        String monitor;
+        String descripcion;
+        String fecha;
+        String hora;
+        
+        try{
+           
+           ubicacion = lineEdit_Ubi_2.text();
+           nombre = lineEdit_nombre_2.text();
+           capacidad = spinBox_capacidad_2.value();
+           monitor = lineEdit_Monitor_2.text();
+           descripcion = lineEdit_descripcion_2.text();
+           fecha = dateEdit.text();
+           hora = timeEdit.text();
+           
+           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+           
+           Clase clase = new Clase(id, ubicacion, nombre, capacidad, monitor, descripcion, LocalDate.parse(fecha, formatter), LocalTime.parse(hora));
+           
+           RestClient rest = new RestClient();
+           
+           rest.modificarClase(clase);
+           
+           JOptionPane.showMessageDialog(jFrame, "Clase modificada correctamente");
+           
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(jFrame, "Error al modificar clase");
+        }
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -155,6 +204,10 @@ public class ModificarClases implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_modificar = new QPushButton(Dialog);
         pushButton_modificar.setObjectName("pushButton_modificar");
         pushButton_modificar.setGeometry(new QRect(230, 580, 91, 41));
+        
+        
+        pushButton_modificar.clicked.connect(this, "modificar()");
+        
         QPalette palette8= new QPalette();
         palette8.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette8.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));
@@ -513,7 +566,7 @@ public class ModificarClases implements com.trolltech.qt.QUiForm<QDialog>
 
     void retranslateUi(QDialog Dialog)
     {
-        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
+        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("GymDam", "GymDam", null));
         lineEdit_descripcion_2.setText("");
         lineEdit_Monitor_2.setText("");
         lineEdit_Ubi_2.setText("");

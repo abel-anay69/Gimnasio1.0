@@ -9,6 +9,8 @@ package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
 import static java.lang.Integer.parseInt;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class ModificarCliente implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -25,6 +27,7 @@ public class ModificarCliente implements com.trolltech.qt.QUiForm<QDialog>
     public QLineEdit lineEdit_Direccion;
     public QLabel label_3;
     public QPushButton pushButton_atras_4;
+    JFrame jFrame = new JFrame();
 
     public ModificarCliente() { super(); }
     
@@ -35,21 +38,32 @@ public class ModificarCliente implements com.trolltech.qt.QUiForm<QDialog>
         String direccion;
         String telefono;
         
-        dni = lineEdit_DNI.text();
+        try{
+            dni = lineEdit_DNI.text();
+
+            nombre = lineEdit_nombre.text();
+
+            apellidos = lineEdit_Apellidos.text();
+
+            direccion = lineEdit_Direccion.text();
+
+            telefono = lineEdit_Telefono.text();
+
+            Cliente c = new Cliente(dni, nombre, apellidos, direccion, parseInt(telefono));
+
+            RestClient rest = new RestClient();
+
+            rest.insertarCliente(c);
+
+            
+            JOptionPane.showMessageDialog(jFrame, "Cliente modificado correctamente");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(jFrame, "Error al modificar cliente");
+        }
         
-        nombre = lineEdit_nombre.text();
         
-        apellidos = lineEdit_Apellidos.text();
-        
-        direccion = lineEdit_Direccion.text();
-        
-        telefono = lineEdit_Telefono.text();
-        
-        Cliente c = new Cliente(dni, nombre, apellidos, direccion, parseInt(telefono));
-        
-        RestClient rest = new RestClient();
-        
-        rest.insertarCliente(c);
     }
 
     public void setupUi(QDialog Dialog)
@@ -398,7 +412,7 @@ public class ModificarCliente implements com.trolltech.qt.QUiForm<QDialog>
 
     void retranslateUi(QDialog Dialog)
     {
-        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
+        Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("GymDam", "GymDam", null));
         Direccion.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "&Direcci\u00f3n:", null));
         lineEdit_nombre.setText("");
         Nombre.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "&Nombre:", null));
