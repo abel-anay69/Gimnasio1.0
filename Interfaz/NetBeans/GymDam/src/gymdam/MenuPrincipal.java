@@ -39,6 +39,7 @@ public class MenuPrincipal implements com.trolltech.qt.QUiForm<QDialog>
         clientes.setupUi(dialog);
         dialog.show();
     }
+   
 
     public void setupUi(QDialog Dialog)
     {

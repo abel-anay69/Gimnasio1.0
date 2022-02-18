@@ -114,11 +114,11 @@ public class RestClient {
          }
     }
     
-    public void eliminarClase(String nombre){
+    public void eliminarClase(int id){
         
         try{
             
-            WebTarget wt = this.client.target("http://localhost:8080/cliente/" + nombre);
+            WebTarget wt = this.client.target("http://localhost:8080/clase/" + id);
             Invocation.Builder invocationBuilder = wt.request(MediaType.APPLICATION_JSON);
             
             Response response = invocationBuilder.delete();

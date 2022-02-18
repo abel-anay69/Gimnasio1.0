@@ -8,6 +8,8 @@
 package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class CrearReserva implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -19,8 +21,22 @@ public class CrearReserva implements com.trolltech.qt.QUiForm<QDialog>
     public QTableView tableView_Clases;
     public QLineEdit lineEdit;
     public QTableView tableView_Cliente;
+    JFrame jFrame = new JFrame();
 
     public CrearReserva() { super(); }
+    
+    void crear(){
+        int id;
+        String dni;
+        
+        try{
+            JOptionPane.showMessageDialog(jFrame, "Reserva insertado correctamente");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(jFrame, "Error al insertar reserva");
+        }
+    }
 
     public void setupUi(QDialog Dialog)
     {

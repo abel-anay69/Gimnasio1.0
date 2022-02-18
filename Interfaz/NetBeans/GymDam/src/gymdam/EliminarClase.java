@@ -8,6 +8,8 @@
 package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class EliminarClase implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -17,8 +19,28 @@ public class EliminarClase implements com.trolltech.qt.QUiForm<QDialog>
     public QTableView tableView_2;
     public QLabel label_3;
     public QSpinBox spinBox;
+    JFrame jFrame = new JFrame();
 
     public EliminarClase() { super(); }
+    
+    void eliminar(){
+        int id;
+        
+        try{
+             id = spinBox.value();
+       
+        
+            RestClient rest = new RestClient();
+        
+            rest.eliminarClase(id);
+        
+            JOptionPane.showMessageDialog(jFrame, "Clase eliminada correctamente");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(jFrame, "Error al eliminar la clase");
+        }
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -74,6 +96,9 @@ public class EliminarClase implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_2 = new QPushButton(Dialog);
         pushButton_2.setObjectName("pushButton_2");
         pushButton_2.setGeometry(new QRect(680, 400, 91, 41));
+        
+        pushButton_2.clicked.connect(this, "eliminar()");
+        
         QPalette palette1= new QPalette();
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));
@@ -172,6 +197,9 @@ public class EliminarClase implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_atras_3.setStyleSheet("background-Color:rgb(255, 255, 255)");
         pushButton_atras_3.setIcon(new QIcon(new QPixmap("Logo/atras.png")));
         pushButton_atras_3.setIconSize(new QSize(50, 50));
+        
+        pushButton_atras_3.clicked.connect(Dialog, "close()");
+        
         tableView_2 = new QTableView(Dialog);
         tableView_2.setObjectName("tableView_2");
         tableView_2.setGeometry(new QRect(20, 130, 961, 192));

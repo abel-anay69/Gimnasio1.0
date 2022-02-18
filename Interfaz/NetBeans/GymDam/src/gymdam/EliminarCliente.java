@@ -39,17 +39,6 @@ public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
             e.printStackTrace();
             JOptionPane.showMessageDialog(jFrame, "Error al eliminar cliente");
         }
-        
-        
-        dni = lineEdit_Borrar.text();
-       
-        
-        RestClient rest = new RestClient();
-        
-        rest.eliminarCLiente(dni);
-        
-        
-        JOptionPane.showMessageDialog(jFrame, "Cliente eliminado correctamente");
     }
 
 
