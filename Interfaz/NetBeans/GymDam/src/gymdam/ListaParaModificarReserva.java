@@ -21,7 +21,8 @@ public class ListaParaModificarReserva implements com.trolltech.qt.QUiForm<QDial
     public ListaParaModificarReserva() { super(); }
     
     void modificar(){
-        ModificarReserva mr = new ModificarReserva();
+        int id = spinBox.value();
+        ModificarReserva mr = new ModificarReserva(id);
         QDialog dialog = new QDialog();
         mr.setupUi(dialog);
         dialog.show();
@@ -81,6 +82,9 @@ public class ListaParaModificarReserva implements com.trolltech.qt.QUiForm<QDial
         pushButton_modificar = new QPushButton(Dialog);
         pushButton_modificar.setObjectName("pushButton_modificar");
         pushButton_modificar.setGeometry(new QRect(740, 430, 81, 41));
+        
+        pushButton_modificar.clicked.connect(this, "modificar()");
+        
         QPalette palette1= new QPalette();
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));
@@ -96,8 +100,6 @@ public class ListaParaModificarReserva implements com.trolltech.qt.QUiForm<QDial
         font.setFamily("Onyx");
         font.setPointSize(15);
         pushButton_modificar.setFont(font);
-        
-        pushButton_modificar.clicked.connect(this, "modificar()");
         
         label_4 = new QLabel(Dialog);
         label_4.setObjectName("label_4");
@@ -260,7 +262,7 @@ public class ListaParaModificarReserva implements com.trolltech.qt.QUiForm<QDial
         Dialog.setWindowTitle(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dialog", null));
         pushButton_modificar.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Modificar", null));
         label_4.setText("");
-        texto.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dime la de la reserva que quieres modificar", null));
+        texto.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dime la ID de la reserva que quieres modificar", null));
         pushButton_2.setText("");
     } // retranslateUi
 

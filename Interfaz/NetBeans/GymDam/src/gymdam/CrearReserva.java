@@ -22,14 +22,27 @@ public class CrearReserva implements com.trolltech.qt.QUiForm<QDialog>
     public QLineEdit lineEdit;
     public QTableView tableView_Cliente;
     JFrame jFrame = new JFrame();
+    
 
     public CrearReserva() { super(); }
     
     void crear(){
+       
         int id;
         String dni;
         
         try{
+            
+            id = spinBox_capacidad_2.value();
+            dni = lineEdit.text();
+            
+            System.out.println(id + dni);
+            
+            Reserva r = new Reserva(dni, id);
+            
+            RestClient rest = new RestClient();
+
+            rest.insertarReserva(r);
             JOptionPane.showMessageDialog(jFrame, "Reserva insertado correctamente");
         }
         catch(Exception e){
@@ -49,7 +62,7 @@ public class CrearReserva implements com.trolltech.qt.QUiForm<QDialog>
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Midlight, new QColor(0, 0, 0));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Dark, new QColor(0, 0, 0));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Mid, new QColor(0, 0, 0));
-        palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(255, 255, 255));
+        palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(255, 255, 255));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, new QColor(255, 255, 255));
         palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, new QColor(0, 0, 0));
@@ -92,6 +105,9 @@ public class CrearReserva implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_2 = new QPushButton(Dialog);
         pushButton_2.setObjectName("pushButton_2");
         pushButton_2.setGeometry(new QRect(250, 730, 91, 41));
+        
+        pushButton_2.clicked.connect(this, "crear()");
+        
         QPalette palette1= new QPalette();
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette1.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));

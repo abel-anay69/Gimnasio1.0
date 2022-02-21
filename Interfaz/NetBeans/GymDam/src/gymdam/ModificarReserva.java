@@ -8,6 +8,8 @@
 package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class ModificarReserva implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -18,8 +20,37 @@ public class ModificarReserva implements com.trolltech.qt.QUiForm<QDialog>
     public QLabel textoBorrar_3;
     public QPushButton pushButton_modificar;
     public QPushButton pushButton_atras;
+    JFrame jFrame = new JFrame();
+    private int id;
 
     public ModificarReserva() { super(); }
+    
+    public ModificarReserva(int id) {
+        super(); 
+        this.id = id;
+    }
+    
+    void modificar(){
+        int idClase;
+        String dniCliente;
+        
+        try{
+            idClase = spinBox.value();
+            dniCliente = lineEdit_dni.text();
+            
+            Reserva r = new Reserva(id,dniCliente, idClase);
+            
+            RestClient rest = new RestClient();
+           
+           rest.modificarReserva(r);
+           
+           JOptionPane.showMessageDialog(jFrame, "Reserva modificada correctamente");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(jFrame, "Error al modificar la reserva");
+        }
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -253,6 +284,9 @@ public class ModificarReserva implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_modificar = new QPushButton(Dialog);
         pushButton_modificar.setObjectName("pushButton_modificar");
         pushButton_modificar.setGeometry(new QRect(270, 200, 91, 41));
+        
+        pushButton_modificar.clicked.connect(this, "modificar()");
+        
         QPalette palette6= new QPalette();
         palette6.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
         palette6.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.BrightText, new QColor(0, 0, 0));
@@ -315,7 +349,7 @@ public class ModificarReserva implements com.trolltech.qt.QUiForm<QDialog>
         DNI_2.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "&DNI:", null));
         ID.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "&ID:", null));
         lineEdit_dni.setText("");
-        textoBorrar_3.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dime la ID de la clase y el DNI del cliente para la clase que deseesmodificar", null));
+        textoBorrar_3.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Dime la ID de la clase y el DNI del cliente para la clase que desees modificar", null));
         pushButton_modificar.setText(com.trolltech.qt.core.QCoreApplication.translate("Dialog", "Modificar", null));
         pushButton_atras.setText("");
     } // retranslateUi

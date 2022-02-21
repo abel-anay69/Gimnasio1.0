@@ -11,23 +11,23 @@ package gymdam;
  */
 public class Reserva {
     private int id;
-    private Cliente cliente;
-    private Clase clase;
+    private String cliente_dni;
+    private int clase_id;
     
     
     public Reserva(){
         
     }
-    
-    public Reserva(int id, Cliente cliente, Clase clase){
+
+    public Reserva(int id, String cliente_dni, int clase_id) {
         this.id = id;
-        this.cliente = cliente;
-        this.clase = clase;
+        this.cliente_dni = cliente_dni;
+        this.clase_id = clase_id;
     }
-    
-    public Reserva(Cliente cliente, Clase clase){
-        this.cliente = cliente;
-        this.clase = clase;
+
+    public Reserva(String cliente_dni, int clase_id) {
+        this.cliente_dni = cliente_dni;
+        this.clase_id = clase_id;
     }
 
     public int getId() {
@@ -38,28 +38,29 @@ public class Reserva {
         this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public String getDni() {
+        return cliente_dni;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setDni(String cliente_dni) {
+        this.cliente_dni = cliente_dni;
     }
 
-    public Clase getClase() {
-        return clase;
+    public int getIdClase() {
+        return clase_id;
     }
 
-    public void setClase(Clase clase) {
-        this.clase = clase;
+    public void setIdClase(int clase_id) {
+        this.clase_id = clase_id;
     }
+    
+    
 
     @Override
     public String toString() {
         return "{" +
-                ", \"id\" :" + id +
-                ", \"cliente\" :\"" + cliente.toString() + '\"' +
-                ", \"clase\" :\"" + clase.toString() + '\"' +
+                " \"cliente\" :\"" + cliente_dni + '\"' +
+                ", \"clase\" :\"" + clase_id + '\"' +
                 '}';
     }
     

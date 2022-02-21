@@ -8,6 +8,8 @@
 package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class EliminarReserva implements com.trolltech.qt.QUiForm<QDialog>
 {
@@ -15,8 +17,28 @@ public class EliminarReserva implements com.trolltech.qt.QUiForm<QDialog>
     public QPushButton pushButton_borrar;
     public QSpinBox spinBox;
     public QPushButton pushButton_atras;
+    JFrame jFrame = new JFrame();
 
     public EliminarReserva() { super(); }
+    
+    void eliminar(){
+        int id;
+        
+        try{
+             id = spinBox.value();
+       
+        
+            RestClient rest = new RestClient();
+            
+            rest.eliminarReserva(id);
+            
+            JOptionPane.showMessageDialog(jFrame, "Reserva eliminada correctamente");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(jFrame, "Error al eliminar la reserva");
+        }
+    }
 
     public void setupUi(QDialog Dialog)
     {
@@ -152,6 +174,9 @@ public class EliminarReserva implements com.trolltech.qt.QUiForm<QDialog>
         pushButton_atras = new QPushButton(Dialog);
         pushButton_atras.setObjectName("pushButton_atras");
         pushButton_atras.setGeometry(new QRect(20, 30, 61, 51));
+        
+        pushButton_borrar.clicked.connect(this, "eliminar()");
+        
         QPalette palette4= new QPalette();
         palette4.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, new QColor(255, 255, 255));
         palette4.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, new QColor(0, 0, 0));
