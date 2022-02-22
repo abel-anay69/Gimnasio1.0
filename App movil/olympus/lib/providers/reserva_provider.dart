@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
 import 'package:olympus/models/reserva.dart';
 import 'package:http/http.dart' as http;
 
 class ReservaProvider {
   String _url = 'my-json-server.typicode.com';
-  String _urlPC = '192.168.1.5:8080';
+  String _urlPC = '192.168.31.116:8080';
 
   List<Reserva> _listReservas = [];
 
@@ -26,6 +25,15 @@ class ReservaProvider {
     print(decodedData);
     final reservas = new Reservas.fromJsonList(decodedData);
     return reservas.items;
+  }
+
+  Future<http.Response> createReserva(String dni, int id) {
+    return http.post(Uri.parse('http://' + _urlPC + '/reserva'),
+        headers: <String, String>{
+          'content-Type': 'application/json; charset=UTF-8'
+        },
+        body: jsonEncode(
+            <String, String>{'cliente': dni, 'clase': id.toString()}));
   }
 
   Future<List<Reserva>> getReservas() async {

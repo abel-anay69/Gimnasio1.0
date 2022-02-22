@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:olympus/providers/reserva_provider.dart';
 
 void main() => runApp(calendario());
 
@@ -28,7 +29,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   DateTime selectedDate = DateTime.now();
 
-  Future<Null> _selectDate(BuildContext context) async {
+  Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
@@ -40,6 +41,14 @@ class _MyHomePageState extends State<MyHomePage> {
         print(aux[0]);
         selectedDate = picked;
       });
+  }
+
+  _crearReserva() {
+    final reservaProvider = ReservaProvider();
+    var dni = "1234A";
+    var id_clase = 1;
+    reservaProvider.createReserva(dni, id_clase);
+    print("Hola reserva");
   }
 
   @override
@@ -59,6 +68,14 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(
               onPressed: () => _selectDate(context),
               child: Text('Select date'),
+            ),
+            MaterialButton(
+              minWidth: 200.0,
+              height: 40.0,
+              onPressed: () => _crearReserva(),
+              color: Colors.lightBlue,
+              child:
+                  Text('Crear Reserva', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
