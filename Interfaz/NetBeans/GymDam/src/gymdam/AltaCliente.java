@@ -12,6 +12,12 @@ import static java.lang.Integer.parseInt;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Abel, Aitor, Yaasin
+ * @version v.5
+ */
+
 public class AltaCliente implements com.trolltech.qt.QUiForm<QDialog>
 {
     public QLineEdit lineEdit_Ubi_2;

@@ -14,6 +14,12 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Abel, Aitor, Yaasin
+ * @version v.5
+ */
+
 
 public class ModificarClases implements com.trolltech.qt.QUiForm<QDialog>
 {

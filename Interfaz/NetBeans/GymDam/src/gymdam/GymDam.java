@@ -11,7 +11,8 @@ import com.trolltech.qt.gui.*;
 
 /**
  *
- * @author dam_aap
+ * @author Abel, Aitor, Yaasin
+ * @version v.5
  */
 public class GymDam {
 

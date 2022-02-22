@@ -58,7 +58,7 @@ public class ClaseController{
         return new ResponseEntity<>(clase, HttpStatus.OK);
     }
 
-    @Operation(summary = "Registra una nuevo clase")
+    @Operation(summary = "Registra una nueva clase")
     @ApiResponses(value = {
 
             @ApiResponse(responseCode = "200", description = "Se registra la clase", content = @Content(schema = @Schema(implementation = Clase.class)))

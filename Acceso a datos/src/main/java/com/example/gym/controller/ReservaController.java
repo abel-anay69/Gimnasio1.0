@@ -80,7 +80,7 @@ public class ReservaController {
     }
 
 
-    @Operation(summary = "Elimina un vuelo")
+    @Operation(summary = "Elimina una reserva")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Se elimina la reserva", content = @Content(schema = @Schema(implementation =
                     Response.class))),

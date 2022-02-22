@@ -17,7 +17,8 @@ import org.glassfish.hk2.api.*;
 
 /**
  *
- * @author dam_aap
+ * @author Abel, Aitor, Yaasin
+ * @version v.5
  */
 public class RestClient {
     
@@ -27,6 +28,11 @@ public class RestClient {
         this.client = ClientBuilder.newClient();
     }
     
+    
+    /**
+     *  POST de Cliente
+     * @param c 
+     */
     public void insertarCliente(Cliente c){
         
         try{
@@ -44,6 +50,10 @@ public class RestClient {
          }
     }
     
+    /**
+     *  PUT de Cliente
+     * @param c 
+     */
     public void modificarCLiente(Cliente c){
         
         try{
@@ -60,6 +70,11 @@ public class RestClient {
             e.printStackTrace();
          }
     }
+    
+    /**
+     * DELETE de Cliente
+     * @param dni 
+     */
     
     public void eliminarCLiente(String dni){
         
@@ -78,6 +93,11 @@ public class RestClient {
          }
     }
     
+    /**
+     * POST de Clase
+     * @param clase 
+     */
+    
     public void insertarClase(Clase clase){
         
         try{
@@ -94,6 +114,11 @@ public class RestClient {
             e.printStackTrace();
          }
     }
+    
+    /**
+     * PUT de Clase
+     * @param clase 
+     */
     
     public void modificarClase(Clase clase){
         
@@ -112,6 +137,11 @@ public class RestClient {
          }
     }
     
+    /**
+     * DELETE de Clase
+     * @param id 
+     */
+    
     public void eliminarClase(int id){
         
         try{
@@ -128,6 +158,11 @@ public class RestClient {
             e.printStackTrace();
          }
     }
+    
+    /**
+     * POST de Reserva
+     * @param r 
+     */
     
     public void insertarReserva(Reserva r){
         
@@ -146,6 +181,11 @@ public class RestClient {
          }
     }
     
+    /**
+     * PUT de Reserva
+     * @param reserva 
+     */
+    
      public void modificarReserva(Reserva reserva){
 
         try{
@@ -162,6 +202,11 @@ public class RestClient {
             e.printStackTrace();
          }
     }
+     
+     /**
+      * DELETE de Reserva
+      * @param id 
+      */
      
      public void eliminarReserva(int id){
         
@@ -180,20 +225,6 @@ public class RestClient {
          }
     }
     
-     /*public Cliente(int id){
-         
-         Cliente c = new Cliente();
-         try{
-             
-            WebTarget wt = this.client.target("http://localhost:8080/cliente/" + id);
-            Invocation.Builder invocationBuilder = wt.request(MediaType.APPLICATION_JSON);
-            
-            Response response = invocationBuilder.get();
-            
-         }
-         catch(Exception e){
-            e.printStackTrace();
-         }
-    }*/
+     
     
 }

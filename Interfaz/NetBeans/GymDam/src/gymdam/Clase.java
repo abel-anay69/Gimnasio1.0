@@ -10,7 +10,8 @@ import java.time.LocalTime;
 
 /**
  *
- * @author dam_aap
+ * @author Abel, Aitor, Yaasin
+ * @version v.5
  */
 public class Clase {
     private int id;

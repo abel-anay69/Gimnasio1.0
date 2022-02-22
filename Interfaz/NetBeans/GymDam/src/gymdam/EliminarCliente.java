@@ -12,6 +12,12 @@ import static java.lang.Integer.parseInt;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Abel, Aitor, Yaasin
+ * @version v.5
+ */
+
 public class EliminarCliente implements com.trolltech.qt.QUiForm<QDialog>
 {
     public QLabel textoBorrar_2;

@@ -9,6 +9,12 @@ package gymdam;
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
 
+/**
+ *
+ * @author Abel, Aitor, Yaasin
+ * @version v.5
+ */
+
 public class ListaReserva implements com.trolltech.qt.QUiForm<QDialog>
 {
     public QDateEdit dateEdit;

@@ -11,6 +11,12 @@ import com.trolltech.qt.gui.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Abel, Aitor, Yaasin
+ * @version v.5
+ */
+
 public class CrearReserva implements com.trolltech.qt.QUiForm<QDialog>
 {
     public QPushButton pushButton_2;

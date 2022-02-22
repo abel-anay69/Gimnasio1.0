@@ -7,7 +7,8 @@ package gymdam;
 
 /**
  *
- * @author dam_aap
+ * @author Abel, Aitor, Yaasin
+ * @version v.5
  */
 public class Reserva {
     private int id;
