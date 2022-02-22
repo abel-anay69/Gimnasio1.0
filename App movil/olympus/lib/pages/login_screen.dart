@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:olympus/src/screens/GridLayout.dart';
+import 'package:olympus/pages/home_screen.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _State extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/olympus.png',
+                'assets/images/olympus.png',
                 fit: BoxFit.contain,
                 height: 75,
               ),
@@ -37,7 +37,7 @@ class _State extends State<LoginPage> {
                     child: Text(
                       'Iniciar sesion',
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
@@ -79,7 +79,7 @@ class _State extends State<LoginPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => GridLayout()),
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
                         );
                       },
                     )),
